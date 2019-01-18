@@ -2,7 +2,10 @@ package com.kaniademianchuk.model.state;
 
 public interface Turnonable {
     void turnOn();
-    void tunrOf();
+
+    void turnOff();
+
     void toggle();
-    boolean getState();
+
+    boolean isOn();
 }

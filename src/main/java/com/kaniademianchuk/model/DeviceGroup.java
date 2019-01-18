@@ -9,7 +9,7 @@ public class DeviceGroup {
     }
 
     public DeviceGroup(Device... devices) {
-        super();
+        this();
         for (Device device : devices)
             this.devices.put(device.getId(), device);
     }

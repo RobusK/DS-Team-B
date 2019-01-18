@@ -1,14 +1,23 @@
 package com.kaniademianchuk.model;
 
+import com.kaniademianchuk.model.state.Turnonable;
+
 import java.util.Objects;
 
-public class Device {
+public class Device implements Turnonable {
     private final long id;
     private String name;
+    private boolean isOn;
 
-    public Device(long id, String name){
+    public Device(long id, String name) {
         this.id = id;
         this.name = name;
+        this.isOn = false;
+    }
+
+    public Device(long id, String name, boolean isOn) {
+        this(id, name);
+        this.isOn = isOn;
     }
 
     public long getId() {
@@ -36,5 +45,29 @@ public class Device {
     @Override
     public String toString() {
         return "Id: " + id + ", Name: " + name;
+    }
+
+    @Override
+    public void turnOn() {
+        this.isOn = true;
+    }
+
+    @Override
+    public void turnOff() {
+        this.isOn = false;
+    }
+
+    @Override
+    public void toggle() {
+        if (isOn) {
+            isOn = false;
+        } else {
+            isOn = true;
+        }
+    }
+
+    @Override
+    public boolean isOn() {
+        return isOn;
     }
 }
