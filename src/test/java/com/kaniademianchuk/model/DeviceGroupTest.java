@@ -16,9 +16,9 @@ class DeviceGroupTest {
             assertEquals(0, group1.getSize());
 
             DeviceGroup group2 = new DeviceGroup(
-                    new Device(1, "Smart bulb"),
-                    new Device(2, "Smart switch"),
-                    new Device(3, "Smart outlet"));
+                    new Device.Builder().setId(1).setName("Smart bulb").setOn(true).build(),
+                    new Device.Builder().setId(2).setName("Smart switch").setOn(true).build(),
+                    new Device.Builder().setId(3).setName("Smart outlet").setOn(true).build());
             assertNotNull(group2);
             assertEquals(3, group2.getSize());
         }
@@ -32,9 +32,9 @@ class DeviceGroupTest {
     @BeforeEach
     void setUp() {
         group = new DeviceGroup();
-        device1 = new Device(1, "Smart bulb");
-        device2 = new Device(2, "Smart switch");
-        device3 = new Device(3, "Smart outlet");
+        device1 = new Device.Builder().setId(1).setName("Smart bulb").setOn(true).build();
+        device2 = new Device.Builder().setId(2).setName("Smart switch").setOn(true).build();
+        device3 = new Device.Builder().setId(3).setName("Smart outlet").setOn(true).build();
     }
 
     @Test
