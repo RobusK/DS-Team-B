@@ -1,7 +1,5 @@
 package com.kaniademianchuk.model;
 
-import sun.plugin.dom.exception.InvalidStateException;
-
 import java.util.Objects;
 import java.util.Optional;
 
@@ -91,7 +89,7 @@ public class Device {
 
         public Device build() {
             if (!(this.name.isPresent() && this.id.isPresent() && this.isOn.isPresent())) {
-                throw new InvalidStateException("Not everything filled");
+                throw new RuntimeException("Not everything filled");
             }
             return new Device(this.id.get(), this.name.get(), this.isOn.get());
         }
