@@ -1,4 +1,4 @@
-package com.kaniademianchuk.model.api;
+package com.kaniademianchuk.api;
 
 import com.kaniademianchuk.model.Device;
 
@@ -11,6 +11,8 @@ public interface SmartDeviceApi {
     boolean updateDevice(int id, Device.Builder deviceBuilder);
 
     boolean removeDevice(int id);
+
+    Optional<Device> getDeviceById(int id);
 
     Collection<Device> getAllDevices();
 }

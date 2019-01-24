@@ -1,4 +1,4 @@
-package com.kaniademianchuk.model.api;
+package com.kaniademianchuk.api;
 
 public interface Turnonable {
     void turnOn();
