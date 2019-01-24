@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ds-team-b" target="1.7" />
+      <module name="ds-team-b" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
