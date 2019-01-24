@@ -53,10 +53,10 @@ public class Device {
         private Optional<String> name = Optional.empty();
         private Optional<Boolean> isOn = Optional.empty();
 
-        Builder() {
+        public Builder() {
         }
 
-        Builder(Builder builder) {
+        public Builder(Builder builder) {
             this.id = builder.id;
             this.name = builder.name;
             this.isOn = builder.isOn;
@@ -66,7 +66,7 @@ public class Device {
             return id;
         }
 
-        public Builder setId(int id) {
+        protected Builder setId(int id) {
             this.id = Optional.of(id);
             return this;
         }
@@ -96,7 +96,7 @@ public class Device {
             return new Device(this.id.get(), this.name.get(), this.isOn.get());
         }
 
-        public boolean readyToBeAdded() {
+        public boolean isReadyToBeAdded() {
             return (this.name.isPresent() && this.isOn.isPresent());
         }
     }

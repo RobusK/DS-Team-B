@@ -1,7 +1,7 @@
 package com.kaniademianchuk.model;
 
 
-import com.kaniademianchuk.model.api.SmartDeviceApi;
+import com.kaniademianchuk.api.SmartDeviceApi;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ public class DeviceManager implements SmartDeviceApi {
 
     @Override
     public Optional<Integer> addDevice(Device.Builder deviceBuilder) {
-        if (!deviceBuilder.readyToBeAdded()) {
+        if (!deviceBuilder.isReadyToBeAdded()) {
             return Optional.empty();
         }
         int id = this.latestId++;
@@ -34,6 +34,7 @@ public class DeviceManager implements SmartDeviceApi {
         if (!builder.isOn().isPresent()) {
             builder.setOn(prev.isOn());
         }
+        builder.setId(prev.getId());
         this.allDevices.put(id, builder.build());
         return true;
     }
@@ -45,6 +46,14 @@ public class DeviceManager implements SmartDeviceApi {
         }
         this.allDevices.remove(id);
         return true;
+    }
+
+    @Override
+    public Optional<Device> getDeviceById(int id) {
+        if (!this.allDevices.containsKey(id)) {
+            return Optional.empty();
+        }
+        return Optional.of(allDevices.get(id));
     }
 
     @Override

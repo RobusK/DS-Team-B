@@ -22,7 +22,7 @@ public class DeviceGroup {
         return this.devices.remove(device.getId());
     }
 
-    public Device getDeviceById(long id) {
+    public Device getDeviceById(int id) {
         return this.devices.get(id);
     }
 

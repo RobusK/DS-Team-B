@@ -16,9 +16,21 @@ class DeviceGroupTest {
             assertEquals(0, group1.getSize());
 
             DeviceGroup group2 = new DeviceGroup(
-                    new Device.Builder().setId(1).setName("Smart bulb").setOn(true).build(),
-                    new Device.Builder().setId(2).setName("Smart switch").setOn(true).build(),
-                    new Device.Builder().setId(3).setName("Smart outlet").setOn(true).build());
+                    new Device.Builder()
+                            .setId(1)
+                            .setName("Smart bulb")
+                            .setOn(true)
+                            .build(),
+                    new Device.Builder()
+                            .setId(2)
+                            .setName("Smart switch")
+                            .setOn(true)
+                            .build(),
+                    new Device.Builder()
+                            .setId(3)
+                            .setName("Smart outlet")
+                            .setOn(true)
+                            .build());
             assertNotNull(group2);
             assertEquals(3, group2.getSize());
         }
@@ -71,8 +83,9 @@ class DeviceGroupTest {
     @Test
     void toStringTest() {
         group = new DeviceGroup(device1, device2);
-        String test = "Id: 1, Name: Smart bulb" + System.lineSeparator() +
-                "Id: 2, Name: Smart switch" + System.lineSeparator();
+
+        String test = "Device[Id: 1, Name: Smart bulb, isOn: true]" + System.lineSeparator() +
+                "Device[Id: 2, Name: Smart switch, isOn: true]" + System.lineSeparator();
 
         assertTrue(group.toString().equals(test));
     }

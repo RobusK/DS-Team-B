@@ -1,6 +1,8 @@
-package com.kaniademianchuk.model;
+package com.kaniademianchuk;
 
-import com.kaniademianchuk.model.api.SmartDeviceApi;
+import com.kaniademianchuk.api.SmartDeviceApi;
+import com.kaniademianchuk.model.Device;
+import com.kaniademianchuk.model.DeviceManager;
 
 import java.util.HashMap;
 import java.util.Map;
