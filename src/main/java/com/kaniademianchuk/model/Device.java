@@ -1,26 +1,23 @@
 package com.kaniademianchuk.model;
 
-import com.kaniademianchuk.model.state.Turnonable;
+import sun.plugin.dom.exception.InvalidStateException;
 
 import java.util.Objects;
+import java.util.Optional;
 
-public class Device implements Turnonable {
-    private final long id;
-    private String name;
-    private boolean isOn;
+public class Device {
 
-    public Device(long id, String name) {
+    private final int id;
+    private final String name;
+    private final boolean isOn;
+
+    private Device(int id, String name, boolean isOn) {
         this.id = id;
         this.name = name;
-        this.isOn = false;
-    }
-
-    public Device(long id, String name, boolean isOn) {
-        this(id, name);
         this.isOn = isOn;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -47,27 +44,60 @@ public class Device implements Turnonable {
         return "Id: " + id + ", Name: " + name;
     }
 
-    @Override
-    public void turnOn() {
-        this.isOn = true;
-    }
-
-    @Override
-    public void turnOff() {
-        this.isOn = false;
-    }
-
-    @Override
-    public void toggle() {
-        if (isOn) {
-            isOn = false;
-        } else {
-            isOn = true;
-        }
-    }
-
-    @Override
     public boolean isOn() {
         return isOn;
+    }
+
+    public static class Builder {
+        private Optional<Integer> id = Optional.empty();
+        private Optional<String> name = Optional.empty();
+        private Optional<Boolean> isOn = Optional.empty();
+
+        Builder() {
+        }
+
+        Builder(Builder builder) {
+            this.id = builder.id;
+            this.name = builder.name;
+            this.isOn = builder.isOn;
+        }
+
+        public Optional<Integer> getId() {
+            return id;
+        }
+
+        public Builder setId(int id) {
+            this.id = Optional.of(id);
+            return this;
+        }
+
+        public Optional<String> getName() {
+            return name;
+        }
+
+        public Builder setName(String name) {
+            this.name = Optional.of(name);
+            return this;
+        }
+
+        public Optional<Boolean> isOn() {
+            return isOn;
+        }
+
+        public Builder setOn(boolean on) {
+            isOn = Optional.of(on);
+            return this;
+        }
+
+        public Device build() {
+            if (!(this.name.isPresent() && this.id.isPresent() && this.isOn.isPresent())) {
+                throw new InvalidStateException("Not everything filled");
+            }
+            return new Device(this.id.get(), this.name.get(), this.isOn.get());
+        }
+
+        public boolean readyToBeAdded() {
+            return (this.name.isPresent() && this.isOn.isPresent());
+        }
     }
 }
