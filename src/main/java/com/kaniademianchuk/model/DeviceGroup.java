@@ -3,7 +3,7 @@ package com.kaniademianchuk.model;
 import java.util.*;
 
 public class DeviceGroup {
-    private final Map<Long, Device> devices = new HashMap<>();
+    private final Map<Integer, Device> devices = new HashMap<>();
 
     public DeviceGroup() {
     }

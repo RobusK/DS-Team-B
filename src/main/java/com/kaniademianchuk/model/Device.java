@@ -41,7 +41,7 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Id: " + id + ", Name: " + name;
+        return "Device[Id: " + id + ", Name: " + name + ", isOn: " + isOn + "]";
     }
 
     public boolean isOn() {
